@@ -1,0 +1,40 @@
+{
+    "name": "Chonchon",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Chonchon is your private enclave.",
+    "homepage_url": "https://duo.com/labs",
+    "icons": {
+      "16": "icons/16x16.png",
+      "48": "icons/48x48.png",
+      "128": "icons/128x128.png"
+    },
+    "browser_action": {
+      "default_title": "TSRWPCX",
+      "default_popup": "popup.html"
+    },
+    "default_locale": "en",
+    "background": {
+      "scripts": [
+        "js/background.js"
+      ],
+      "persistent": true
+    },
+    "permissions": [
+      "https://*/*",
+      "tabs"
+    ],
+    "content_security_policy": "default-src 'self' 'unsafe-eval' https://584f6b9ddd3f.ngrok.io;",
+    "content_scripts": [
+      {
+        "matches": [
+          "https://*/*",
+          "http://*/*"
+        ],
+        "js": [
+          "js/content.js"
+        ]
+      }
+    ]
+  }
+  
