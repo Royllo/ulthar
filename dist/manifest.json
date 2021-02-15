@@ -24,17 +24,6 @@
       "https://*/*",
       "tabs"
     ],
-    "content_security_policy": "default-src 'self' 'unsafe-eval' https://584f6b9ddd3f.ngrok.io;",
-    "content_scripts": [
-      {
-        "matches": [
-          "https://*/*",
-          "http://*/*"
-        ],
-        "js": [
-          "js/content.js"
-        ]
-      }
-    ]
+    "content_security_policy": "default-src 'self' 'unsafe-eval' https://584f6b9ddd3f.ngrok.io;"
   }
   
