@@ -5,7 +5,8 @@ class MainBody {
     
     private SendURL(): void {
         chrome.tabs.query({active: true, lastFocusedWindow: true}, (tabs) => {
-            const thisTab = tabs.find((_, i) => i ==0);
+            console.log(tabs);
+            const thisTab = tabs.find((_, i) => i == 0);
             chrome.runtime.sendMessage(thisTab.url);
         });
     }

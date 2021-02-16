@@ -11,7 +11,10 @@
     },
     "options_ui" :{
       "page": "options.html",
-      "open_in_tab": false
+      "open_in_tab": false,
+      "scripts": [
+        "js/options.js"
+      ]
     },
     "browser_action": {
       "default_title": "TSRWPCX",
@@ -29,6 +32,5 @@
       "tabs",
       "storage"
     ],
-    "content_security_policy": "default-src 'self' 'unsafe-eval' http://localhost;"
+    "content_security_policy": "default-src 'self' 'unsafe-eval' https://5a310dbedc2f.ngrok.io;"
   }
-  
