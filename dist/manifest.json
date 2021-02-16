@@ -22,8 +22,9 @@
     },
     "permissions": [
       "https://*/*",
-      "tabs"
+      "tabs",
+      "storage"
     ],
-    "content_security_policy": "default-src 'self' 'unsafe-eval' https://584f6b9ddd3f.ngrok.io;"
+    "content_security_policy": "default-src 'self' 'unsafe-eval' http://localhost;"
   }
   
