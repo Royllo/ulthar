@@ -1,21 +1,39 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
 
-const SetStorage = ({key, data}) => {
-    chrome.storage.local.set({key: data}, () => {
-        if(chrome.runtime.lastError) {
-            console.log(chrome.runtime.lastError.message);
-        }
-    })
-}
 
-const GetStorage = ({key}) => {
-    chrome.storage.local.get(key, (data) => {
-        console.log(data);
-    })
+
+class StorageSystem {
+    public static URL: string;
 }
 
 class MainBody {
+
+    private SetStorage = ({ pair }) => {
+        chrome.storage.sync.set(pair, () => {
+            console.log(`Done...`);
+        });
+        if (chrome.runtime.lastError) {
+            console.log(chrome.runtime.lastError.message);
+        }
+    }
+
+    private GetStorage = ({ key }) => {
+        chrome.storage.sync.get(key, (data) => {
+            console.log(data);
+        });
+        if (chrome.runtime.lastError) {
+            console.log(chrome.runtime.lastError.message);
+        }
+    }
+
+    private SetEvent(event) {
+        StorageSystem.URL = event.target.value;
+    }
+
+    private HandleSubmit = (event) => {
+        this.SetStorage({ pair: { "url": StorageSystem.URL } });
+    }
 
     public Component(): JSX.Element {
         return (
@@ -23,8 +41,15 @@ class MainBody {
                 <div className="center">
                     <h2>Configure</h2>
                     <hr />
-                    <form>
-                        <input type="text" placeholder="Transmitter location" />
+                    <button onClick={() => this.GetStorage({ key: "url" })}>TEST</button>
+                    <form
+                        onSubmit={this.HandleSubmit}
+                    >
+                        <input
+                            type="text"
+                            placeholder="Transmitter location"
+                            onChange={this.SetEvent}
+                        />
                         <input id="submitButton" type="submit" />
                     </form>
                 </div>
