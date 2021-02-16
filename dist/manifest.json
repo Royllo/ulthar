@@ -32,5 +32,5 @@
       "tabs",
       "storage"
     ],
-    "content_security_policy": "default-src 'self' 'unsafe-eval' https://5a310dbedc2f.ngrok.io;"
+    "content_security_policy": "default-src 'self' 'unsafe-eval' https://paperbound-barb-6462.dataplicity.io;"
   }
