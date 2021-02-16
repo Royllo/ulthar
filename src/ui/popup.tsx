@@ -30,7 +30,7 @@ class MainBody {
     }
 }
 
-class Hello extends React.Component {
+class Main extends React.Component {
     render() {
         const body = new MainBody();
         return (
@@ -44,6 +44,6 @@ class Hello extends React.Component {
 // --------------
 
 ReactDOM.render(
-    <Hello />,
+    <Main />,
     document.getElementById('root')
 )

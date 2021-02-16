@@ -16,19 +16,24 @@ const GetStorage = ({key}) => {
 }
 
 class MainBody {
-    
+
     public Component(): JSX.Element {
         return (
             <div>
                 <div className="center">
+                    <h2>Configure</h2>
                     <hr />
+                    <form>
+                        <input type="text" placeholder="Transmitter location" />
+                        <input id="submitButton" type="submit" />
+                    </form>
                 </div>
             </div>
         )
     }
 }
 
-class Hello extends React.Component {
+class Main extends React.Component {
     render() {
         const body = new MainBody();
         return (
@@ -42,6 +47,6 @@ class Hello extends React.Component {
 // --------------
 
 ReactDOM.render(
-    <Hello />,
+    <Main />,
     document.getElementById('root')
 )
