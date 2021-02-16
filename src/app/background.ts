@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener(async(message, sender, sendResponse) => {
     console.log(`${message}`)
-    const response = await fetch('https://584f6b9ddd3f.ngrok.io/', {
+    const response = await fetch('http://localhost:3000/link', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx webpack && cp ./src/styles/popup.css ./dist/css/"
+    "build": "npx webpack && cp ./src/styles/popup.css ./dist/css/ && cp ./src/styles/options.css ./dist/css/"
   },
   "keywords": [],
   "author": "",

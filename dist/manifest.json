@@ -1,13 +1,17 @@
 {
-    "name": "Chonchon",
+    "name": "ulthar",
     "version": "0.0.1",
     "manifest_version": 2,
-    "description": "Chonchon is your private enclave.",
+    "description": "ulthar is your private enclave.",
     "homepage_url": "https://duo.com/labs",
     "icons": {
       "16": "icons/16x16.png",
       "48": "icons/48x48.png",
       "128": "icons/128x128.png"
+    },
+    "options_ui" :{
+      "page": "options.html",
+      "open_in_tab": false
     },
     "browser_action": {
       "default_title": "TSRWPCX",
@@ -22,8 +26,9 @@
     },
     "permissions": [
       "https://*/*",
-      "tabs"
+      "tabs",
+      "storage"
     ],
-    "content_security_policy": "default-src 'self' 'unsafe-eval' https://584f6b9ddd3f.ngrok.io;"
+    "content_security_policy": "default-src 'self' 'unsafe-eval' http://localhost;"
   }
   
