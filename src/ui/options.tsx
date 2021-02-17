@@ -5,6 +5,7 @@ import * as ReactDOM from "react-dom"
 
 class StorageSystem {
     public static URL: string;
+    public static Password: string;
 }
 
 class MainBody {
@@ -27,13 +28,18 @@ class MainBody {
         }
     }
 
-    private SetEvent(event) {
+    private URLSetEvent(event) {
         StorageSystem.URL = event.target.value;
+    }
+
+    private PasswordSetEvent(event) {
+        StorageSystem.Password = event.target.value;
     }
 
     private HandleSubmit = (event) => {
         this.SetStorage({ pair: { "url": StorageSystem.URL } });
     }
+
 
     public Component(): JSX.Element {
         return (
@@ -48,7 +54,12 @@ class MainBody {
                         <input
                             type="text"
                             placeholder="Transmitter location"
-                            onChange={this.SetEvent}
+                            onChange={this.URLSetEvent}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            onChange={this.PasswordSetEvent}
                         />
                         <input id="submitButton" type="submit" />
                     </form>
