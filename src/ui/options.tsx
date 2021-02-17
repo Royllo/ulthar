@@ -5,6 +5,7 @@ import * as ReactDOM from "react-dom"
 
 class StorageSystem {
     public static URL: string;
+    public static Password: string;
 }
 
 class MainBody {
@@ -27,12 +28,18 @@ class MainBody {
         }
     }
 
-    private SetEvent(event) {
+    private URLSetEvent(event) {
         StorageSystem.URL = event.target.value;
     }
 
-    private HandleSubmit = (event) => {
-        this.SetStorage({ pair: { "url": StorageSystem.URL } });
+    private HandleSubmit = (event, { slug }) => {
+        switch(slug){
+            case "url":
+                this.SetStorage({ pair: { "url": StorageSystem.URL } });
+                break;
+            case "password":
+                this.SetStorage({ pair: { "password": StorageSystem.Password } });
+        }
     }
 
     public Component(): JSX.Element {
@@ -41,16 +48,27 @@ class MainBody {
                 <div className="center">
                     <h2>Configure</h2>
                     <hr />
-                    <button onClick={() => this.GetStorage({ key: "url" })}>TEST</button>
                     <form
-                        onSubmit={this.HandleSubmit}
+                        onSubmit={(event) => this.HandleSubmit(event, {slug:"url"})}
                     >
                         <input
                             type="text"
                             placeholder="Transmitter location"
-                            onChange={this.SetEvent}
+                            onChange={(event) => { StorageSystem.URL = event.target.value }}
                         />
-                        <input id="submitButton" type="submit" />
+                        <input className="submitButton" type="submit" />
+                    </form>
+                    <form
+                        onSubmit={(event) => this.HandleSubmit(event, { slug: "password" })}
+                    >
+                        <input
+                            id="passwordField"
+                            type="password"
+                            placeholder="Password"
+                            onChange={(event) => { StorageSystem.Password = event.target.value }}
+                            
+                        />
+                        <input className="submitButton" type="submit" />
                     </form>
                 </div>
             </div>
