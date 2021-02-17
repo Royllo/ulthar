@@ -37,3 +37,9 @@ body {
 .cursor {
     cursor: pointer;
 }
+
+.input-field {
+    position: absolute;
+    top: 162px;
+    left: 8px;
+}

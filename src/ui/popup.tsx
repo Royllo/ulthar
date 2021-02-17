@@ -10,7 +10,7 @@ class MainBody {
     private SendURL(): void {
         chrome.tabs.query({active: true, lastFocusedWindow: true}, (tabs) => {
             const thisTab = tabs.find((_, i) => i == 0);
-            chrome.runtime.sendMessage(`{ 'url': ${thisTab.url}, 'tag': ${PopupStorageSystem.Tag}`);
+            chrome.runtime.sendMessage(`{'url': '${thisTab.url}', 'tag': '${PopupStorageSystem.Tag}'}`);
         });
     }
 
@@ -27,12 +27,13 @@ class MainBody {
                             id="submitButton"
                             onClick={()=> this.SendURL()}
                         />
-                        <input 
-                            type="text" 
-                            placeholder="Tag" 
-                            onChange={(event) => PopupStorageSystem.Tag = event.target.value} 
-                        />
                     </div>
+                    <input 
+                        className="input-field"
+                        type="text" 
+                        placeholder="Tag" 
+                        onChange={(event) => PopupStorageSystem.Tag = event.target.value} 
+                    />
                 </div>
             </div>
         )
