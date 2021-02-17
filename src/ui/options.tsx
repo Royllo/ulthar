@@ -32,14 +32,15 @@ class MainBody {
         StorageSystem.URL = event.target.value;
     }
 
-    private PasswordSetEvent(event) {
-        StorageSystem.Password = event.target.value;
+    private HandleSubmit = (event, { slug }) => {
+        switch(slug){
+            case "url":
+                this.SetStorage({ pair: { "url": StorageSystem.URL } });
+                break;
+            case "password":
+                this.SetStorage({ pair: { "password": StorageSystem.Password } });
+        }
     }
-
-    private HandleSubmit = (event) => {
-        this.SetStorage({ pair: { "url": StorageSystem.URL } });
-    }
-
 
     public Component(): JSX.Element {
         return (
@@ -47,21 +48,27 @@ class MainBody {
                 <div className="center">
                     <h2>Configure</h2>
                     <hr />
-                    <button onClick={() => this.GetStorage({ key: "url" })}>TEST</button>
                     <form
-                        onSubmit={this.HandleSubmit}
+                        onSubmit={(event) => this.HandleSubmit(event, {slug:"url"})}
                     >
                         <input
                             type="text"
                             placeholder="Transmitter location"
-                            onChange={this.URLSetEvent}
+                            onChange={(event) => { StorageSystem.URL = event.target.value }}
                         />
+                        <input className="submitButton" type="submit" />
+                    </form>
+                    <form
+                        onSubmit={(event) => this.HandleSubmit(event, { slug: "password" })}
+                    >
                         <input
+                            id="passwordField"
                             type="password"
                             placeholder="Password"
-                            onChange={this.PasswordSetEvent}
+                            onChange={(event) => { StorageSystem.Password = event.target.value }}
+                            
                         />
-                        <input id="submitButton" type="submit" />
+                        <input className="submitButton" type="submit" />
                     </form>
                 </div>
             </div>

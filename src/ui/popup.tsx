@@ -1,13 +1,16 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
 
+class PopupStorageSystem {
+    public static Tag: string;
+}
+
 class MainBody {
     
     private SendURL(): void {
         chrome.tabs.query({active: true, lastFocusedWindow: true}, (tabs) => {
-            console.log(tabs);
             const thisTab = tabs.find((_, i) => i == 0);
-            chrome.runtime.sendMessage(thisTab.url);
+            chrome.runtime.sendMessage(`{ 'url': ${thisTab.url}, 'tag': ${PopupStorageSystem.Tag}`);
         });
     }
 
@@ -19,10 +22,15 @@ class MainBody {
                     <hr />
                     <div id="shareButton" className="center-position cursor">
                         <img 
-                        className="icon-image" 
-                        src="../icons/icon.png"
-                        id="submitButton"
-                        onClick={()=> this.SendURL()}
+                            className="icon-image" 
+                            src="../icons/icon.png"
+                            id="submitButton"
+                            onClick={()=> this.SendURL()}
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Tag" 
+                            onChange={(event) => PopupStorageSystem.Tag = event.target.value} 
                         />
                     </div>
                 </div>
